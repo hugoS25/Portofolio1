@@ -3,240 +3,299 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BoostCom - Communication Digitale & Réseaux Sociaux</title>
+  <title>BoostCom - Communication & Réseaux Sociaux</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
-    /* Reset & base */
+    /* Reset et base */
     * {
-      margin:0; padding:0; box-sizing:border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      scroll-behavior: smooth;
+      box-sizing: border-box;
     }
     body {
-      background-color: #121212;
-      color: #eee;
-      line-height: 1.5;
+      margin: 0; 
+      font-family: 'Poppins', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      line-height: 1.6;
     }
     a {
-      color: #facc15;
+      color: #007bff;
       text-decoration: none;
       transition: color 0.3s ease;
     }
     a:hover {
-      color: #fff59d;
+      color: #0056b3;
     }
-
-    /* HEADER & NAV */
     header {
-      position: fixed;
-      top:0; left:0; right:0;
-      background: #181818;
+      background: #007bff;
+      padding: 15px 30px;
+      color: white;
       display: flex;
       align-items: center;
-      padding: 10px 20px;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(250, 204, 21, 0.3);
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
-    .logo {
+    header .logo {
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      color: #facc15;
-      font-weight: 700;
-      font-size: 28px;
-      user-select:none;
+      gap: 10px;
+    }
+    /* Logo svg style */
+    header .logo svg {
+      height: 30px;
+      width: 30px;
+      fill: white;
     }
     nav {
-      margin-left: auto;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
     }
     nav a {
-      margin-left: 22px;
       font-weight: 600;
-      font-size: 16px;
-      cursor: pointer;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border-radius: 5px;
+      background: rgba(255 255 255 / 0.2);
     }
-    nav a:hover, nav a.active {
-      color: #fff59d;
+    nav a:hover {
+      background: rgba(255 255 255 / 0.4);
     }
-
     main {
-      padding-top: 80px; /* Pour décaler sous le header */
-      max-width: 900px;
-      margin: 0 auto 50px auto;
-      padding-left: 15px;
-      padding-right: 15px;
+      max-width: 1100px;
+      margin: 30px auto 60px;
+      padding: 0 20px;
     }
-
     section {
       margin-bottom: 60px;
-      padding: 30px 15px;
-      background: #1e1e1e;
-      border-radius: 16px;
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.3);
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgb(0 123 255 / 0.15);
     }
-    h2 {
-      color: #facc15;
-      font-size: 32px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #facc15;
-      padding-bottom: 6px;
-      user-select:none;
+    h1, h2, h3 {
+      color: #007bff;
+      margin-bottom: 15px;
+      font-weight: 700;
     }
     p {
-      font-size: 18px;
-      margin-bottom: 16px;
-      color: #ddd;
-    }
-
-    /* Logo SVG */
-    svg {
-      display: block;
-    }
-
-    /* Section Accueil */
-    #accueil h1 {
-      font-size: 46px;
-      color: #facc15;
-      margin-bottom: 15px;
-    }
-    #accueil p {
-      font-size: 20px;
-      max-width: 700px;
-      margin-bottom: 25px;
-    }
-    #accueil img {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
-      user-select:none;
-    }
-
-    /* Section Services */
-    .service {
+      color: #444;
+      font-size: 1.1rem;
       margin-bottom: 20px;
     }
-    .service h3 {
-      color: #facc15;
-      margin-bottom: 8px;
-      font-size: 24px;
+    /* Hero Section */
+    #hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #007bff 0%, #00bfff 100%);
+      color: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgb(0 123 255 / 0.5);
+      margin-bottom: 50px;
     }
-    .service p {
-      margin-bottom: 12px;
+    #hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
     }
-
-    /* Section Instagram */
-    #instagram {
+    #hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    #hero a.cta-btn {
+      display: inline-block;
+      background: white;
+      color: #007bff;
+      font-weight: 700;
+      padding: 15px 35px;
+      font-size: 1.2rem;
+      border-radius: 40px;
+      box-shadow: 0 4px 15px rgb(0 123 255 / 0.5);
+      transition: background-color 0.3s ease;
+    }
+    #hero a.cta-btn:hover {
+      background: #e6f0ff;
+    }
+    /* Packs Table */
+    #packs h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    #packs p {
+      text-align: center;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 30px;
+    }
+    #packs table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+      font-size: 1rem;
+    }
+    #packs thead tr {
+      background: #007bff;
+      color: white;
       text-align: center;
     }
-    .insta-tabs {
-      margin-bottom: 25px;
-    }
-    .insta-tab-btn {
-      background: none;
-      border: none;
-      color: #facc15;
+    #packs thead th {
+      padding: 15px;
       font-weight: 600;
-      font-size: 16px;
-      margin: 0 8px;
-      padding: 10px 18px;
-      cursor: pointer;
-      border-radius: 10px;
-      transition: background-color 0.3s ease;
-      user-select:none;
     }
-    .insta-tab-btn[aria-selected="true"],
-    .insta-tab-btn:hover {
-      background-color: #facc15;
-      color: #121212;
+    #packs tbody td {
+      padding: 12px 15px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
     }
-    #insta-content {
-      max-width: 400px;
+    #packs tbody tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    #packs tbody td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: #333;
+    }
+    /* Gestion Réseaux sociaux */
+    #gestion p {
+      max-width: 750px;
       margin: 0 auto;
-      background: #121212;
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.7);
-      user-select:none;
+      font-size: 1.1rem;
+      color: #444;
     }
-    #insta-content img {
-      width: 100%;
-      border-radius: 14px;
+    /* Instagram Pages */
+    #instagram {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 25px;
+    }
+    .insta-profile {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgb(0 123 255 / 0.15);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .insta-profile:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgb(0 123 255 / 0.3);
+    }
+    .insta-header {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      gap: 15px;
+    }
+    .insta-header img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       object-fit: cover;
-      aspect-ratio: 1/1;
-      filter: brightness(0.95);
-      margin-bottom: 16px;
-      transition: filter 0.3s ease;
+      border: 2px solid #007bff;
     }
-    #insta-content strong {
-      color: #facc15;
-      font-size: 22px;
-      display: block;
-      margin-bottom: 8px;
-      user-select:text;
+    .insta-info {
+      flex-grow: 1;
     }
-    #insta-content p {
-      color: #ddd;
-      font-size: 16px;
-      line-height: 1.4;
-      user-select:text;
+    .insta-info h3 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #007bff;
     }
-
-    /* Section Contact */
+    .insta-info p {
+      margin: 3px 0 0 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .insta-stats {
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 20px;
+      background: #f5f8fa;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .insta-stats div {
+      text-align: center;
+    }
+    .insta-posts {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 5px;
+    }
+    .insta-posts img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .insta-posts img:hover {
+      transform: scale(1.05);
+    }
+    /* Contact */
     #contact form {
-      max-width: 480px;
+      max-width: 500px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
     }
     #contact label {
-      color: #facc15;
       font-weight: 600;
-      margin-bottom: 6px;
-      user-select:none;
+      color: #007bff;
     }
-    #contact input[type="text"],
-    #contact input[type="email"],
+    #contact input,
     #contact textarea {
-      padding: 12px;
-      border-radius: 10px;
-      border: none;
-      background: #2c2c2c;
-      color: #eee;
-      font-size: 16px;
+      padding: 12px 15px;
+      border: 2px solid #007bff;
+      border-radius: 8px;
+      font-size: 1rem;
       resize: vertical;
-      font-family: inherit;
+      transition: border-color 0.3s ease;
     }
-    #contact textarea {
-      min-height: 120px;
+    #contact input:focus,
+    #contact textarea:focus {
+      border-color: #0056b3;
+      outline: none;
     }
     #contact button {
-      background: #facc15;
-      color: #121212;
+      background: #007bff;
+      color: white;
       font-weight: 700;
-      font-size: 18px;
-      border: none;
+      font-size: 1.1rem;
       padding: 14px;
-      border-radius: 12px;
+      border: none;
+      border-radius: 40px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      user-select:none;
     }
     #contact button:hover {
-      background-color: #fff59d;
+      background: #0056b3;
     }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      #insta-content {
-        max-width: 100%;
-      }
-      nav a {
-        margin-left: 12px;
-        font-size: 14px;
-      }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 25px 10px;
+      background: #007bff;
+      color: white;
+      font-weight: 600;
+      font-size: 0.95rem;
+      user-select: none;
+    }
+    /* Responsive Nav Toggle (for mobile) */
+    @media (max-width: 700px) {
       header {
-        padding: 10px 10px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 12px;
       }
     }
   </style>
@@ -245,160 +304,195 @@
 
 <header>
   <div class="logo" aria-label="Logo BoostCom">
-    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-      <circle cx="50" cy="50" r="48" stroke="#facc15" stroke-width="4"/>
-      <path d="M30 70 L50 30 L70 70" stroke="#facc15" stroke-width="5" stroke-linejoin="round"/>
-      <circle cx="50" cy="30" r="5" fill="#facc15"/>
-      <circle cx="30" cy="70" r="5" fill="#facc15"/>
-      <circle cx="70" cy="70" r="5" fill="#facc15"/>
+    <!-- Logo SVG -->
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <circle cx="32" cy="32" r="30" stroke="white" stroke-width="4" fill="#0056b3"/>
+      <path fill="white" d="M20 43 L44 21 L44 43 Z"/>
     </svg>
     BoostCom
   </div>
   <nav aria-label="Menu principal">
-    <a href="#accueil" class="nav-link active">Accueil</a>
-    <a href="#services" class="nav-link">Services</a>
-    <a href="#instagram" class="nav-link">Instagram</a>
-    <a href="#contact" class="nav-link">Contact</a>
+    <a href="#hero">Accueil</a>
+    <a href="#packs">Nos Packs</a>
+    <a href="#gestion">Gestion Réseaux</a>
+    <a href="#instagram">Instagram</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <main>
-  <section id="accueil" tabindex="-1">
-    <h1>BoostCom</h1>
-    <p>Boostez votre visibilité et dynamisez votre communication digitale avec des solutions adaptées à vos besoins.</p>
-    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=700&q=80" alt="Communication digitale" />
+
+  <section id="hero">
+    <h1>BoostCom - Propulsez votre présence digitale</h1>
+    <p>Expertise en communication digitale, gestion des réseaux sociaux et création de sites web pour faire briller votre entreprise.</p>
+    <a href="#contact" class="cta-btn" aria-label="Contactez-nous">Contactez-nous</a>
   </section>
 
-  <section id="services" tabindex="-1">
-    <h2>Nos Services</h2>
-    <div class="service">
-      <h3>Gestion de pages Instagram</h3>
-      <p>Création et animation de profils Instagram professionnels, avec photos et contenus adaptés à votre image.</p>
-    </div>
-    <div class="service">
-      <h3>Création de sites internet</h3>
-      <p>Développement de sites web modernes, responsives et optimisés pour le référencement.</p>
-    </div>
-    <div class="service">
-      <h3>Stratégie de communication digitale</h3>
-      <p>Accompagnement sur-mesure pour augmenter votre audience et fidéliser vos clients grâce aux réseaux sociaux.</p>
+  <section id="packs" aria-label="Nos offres de gestion des réseaux sociaux">
+    <h2>Nos Packs de Gestion des Réseaux Sociaux</h2>
+    <p>Boostez votre visibilité en choisissant l’offre qui correspond à vos besoins. Nos packs sont conçus pour maximiser l’impact de votre présence en ligne grâce à une gestion professionnelle et adaptée.</p>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Fonctionnalité</th>
+            <th>Pack Basic</th>
+            <th>Pack Pro</th>
+            <th>Pack Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Création de contenu</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+          </tr>
+          <tr>
+            <td>Gestion quotidienne des posts</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+          </tr>
+          <tr>
+            <td>Réponses aux commentaires</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+          </tr>
+          <tr>
+            <td>Analyse des performances</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>✔️</td>
+          </tr>
+          <tr>
+            <td>Publicité ciblée</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>✔️</td>
+          </tr>
+          <tr>
+            <td>Reporting mensuel</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <section id="instagram" tabindex="-1">
-    <h2>Exemples de Pages Instagram</h2>
-    <div class="insta-tabs" role="tablist" aria-label="Navigation des pages Instagram">
-      <button class="insta-tab-btn" role="tab" aria-selected="true" aria-controls="insta-panel" id="tab-0" onclick="showInsta(0)">BistroParisien</button>
-      <button class="insta-tab-btn" role="tab" aria-selected="false" aria-controls="insta-panel" id="tab-1" onclick="showInsta(1)">StudioBarber</button>
-      <button class="insta-tab-btn" role="tab" aria-selected="false" aria-controls="insta-panel" id="tab-2" onclick="showInsta(2)">VisionArt</button>
-      <button class="insta-tab-btn" role="tab" aria-selected="false" aria-controls="insta-panel" id="tab-3" onclick="showInsta(3)">UrbanMood</button>
-      <button class="insta-tab-btn" role="tab" aria-selected="false" aria-controls="insta-panel" id="tab-4" onclick="showInsta(4)">MoveProCoach</button>
-    </div>
+  <section id="gestion" aria-label="Gestion des réseaux sociaux">
+    <h2>Gestion professionnelle de vos réseaux sociaux</h2>
+    <p>
+      Chez BoostCom, nous proposons une gestion complète et personnalisée de vos réseaux sociaux pour renforcer votre image de marque et engager efficacement votre audience.  
+      Que vous soyez une petite entreprise ou un grand compte, nos experts élaborent une stratégie adaptée pour dynamiser votre présence digitale.
+    </p>
+  </section>
 
-    <div id="insta-content" role="tabpanel" aria-labelledby="tab-0" tabindex="0">
-      <!-- Contenu Insta dynamique -->
+  <section id="instagram" aria-label="Exemples de pages Instagram créées">
+    <h2>Exemples de pages Instagram</h2>
+    <div id="insta-list">
+      <!-- Exemple de page Instagram factice -->
+      <article class="insta-profile" aria-label="Page Instagram Photographe - Lumière Fraîche">
+        <div class="insta-header">
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=64&q=80" alt="Photo de profil Lumière Fraîche" />
+          <div class="insta-info">
+            <h3>@lumierefraiche</h3>
+            <p>Photographe pro spécialisé en ambiances condensées et urbaines</p>
+          </div>
+        </div>
+        <div class="insta-stats">
+          <div><strong>2.3K</strong><br/>Abonnés</div>
+          <div><strong>180</strong><br/>Publications</div>
+          <div><strong>350</strong><br/>Abonnements</div>
+        </div>
+        <div class="insta-posts">
+          <img src="https://images.unsplash.com/photo-1519682577862-22b62b24e493?auto=format&fit=crop&w=200&q=80" alt="Photo Instagram 1" />
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=200&q=80" alt="Photo Instagram 2" />
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80" alt="Photo Instagram 3" />
+        </div>
+      </article>
+
+      <article class="insta-profile" aria-label="Page Instagram Entreprise - VitalGreen">
+        <div class="insta-header">
+          <img src="https://images.unsplash.com/photo-1533236897-034cfe8d819a?auto=format&fit=crop&w=64&q=80" alt="Photo de profil VitalGreen" />
+          <div class="insta-info">
+            <h3>@vitalgreen</h3>
+            <p>Entreprise bio spécialisée en produits naturels et éco-responsables</p>
+          </div>
+        </div>
+        <div class="insta-stats">
+          <div><strong>10K</strong><br/>Abonnés</div>
+          <div><strong>420</strong><br/>Publications</div>
+          <div><strong>220</strong><br/>Abonnements</div>
+        </div>
+        <div class="insta-posts">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=200&q=80" alt="Photo Instagram 1" />
+          <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=200&q=80" alt="Photo Instagram 2" />
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=200&q=80" alt="Photo Instagram 3" />
+        </div>
+      </article>
+
+      <article class="insta-profile" aria-label="Page Instagram Studio de Création - UrbanVibe">
+        <div class="insta-header">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=64&q=80" alt="Photo de profil UrbanVibe" />
+          <div class="insta-info">
+            <h3>@urbanvibe</h3>
+            <p>Studio créatif pour communication urbaine et design graphique</p>
+          </div>
+        </div>
+        <div class="insta-stats">
+          <div><strong>5.5K</strong><br/>Abonnés</div>
+          <div><strong>300</strong><br/>Publications</div>
+          <div><strong>180</strong><br/>Abonnements</div>
+        </div>
+        <div class="insta-posts">
+          <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?auto=format&fit=crop&w=200&q=80" alt="Photo Instagram 1" />
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=200&q=80" alt="Photo Instagram 2" />
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80" alt="Photo Instagram 3" />
+        </div>
+      </article>
     </div>
   </section>
 
-  <section id="contact" tabindex="-1">
+  <section id="contact" aria-label="Formulaire de contact">
     <h2>Contactez-nous</h2>
-    <form id="contactForm" novalidate>
-      <label for="name">Nom & Prénom</label>
-      <input type="text" id="name" name="name" placeholder="Votre nom complet" required />
+    <form id="contact-form" action="#" method="post" novalidate>
+      <label for="prenom">Prénom *</label>
+      <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom" />
       
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Votre adresse email" required />
-
-      <label for="message">Votre message</label>
-      <textarea id="message" name="message" placeholder="Écrivez votre message ici..." required></textarea>
-
+      <label for="nom">Nom *</label>
+      <input type="text" id="nom" name="nom" required placeholder="Votre nom" />
+      
+      <label for="message">Votre message *</label>
+      <textarea id="message" name="message" rows="6" required placeholder="Écrivez votre message ici..."></textarea>
+      
       <button type="submit">Envoyer</button>
     </form>
   </section>
+
 </main>
 
+<footer>
+  &copy; 2025 BoostCom - Tous droits réservés
+</footer>
+
 <script>
-  // Insta pages données
-  const instaPages = [
-    {
-      name: '@BistroParisien',
-      img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80',
-      alt: 'Photo Bistro Parisien',
-      desc: 'Restauration • Identité visuelle pro & ambiance raffinée'
-    },
-    {
-      name: '@StudioBarber',
-      img: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80',
-      alt: 'Photo Studio Barber',
-      desc: 'Salon de coiffure • Avant/Après + shooting stylisé'
-    },
-    {
-      name: '@VisionArt',
-      img: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80',
-      alt: 'Photo Vision Art',
-      desc: 'Artiste visuel • Portfolio & engagement boosté'
-    },
-    {
-      name: '@UrbanMood',
-      img: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80',
-      alt: 'Photo Urban Mood',
-      desc: 'Marque streetwear • Feed harmonisé & visuels puissants'
-    },
-    {
-      name: '@MoveProCoach',
-      img: 'https://images.unsplash.com/photo-1554284126-4d9a2b59338f?auto=format&fit=crop&w=400&q=80',
-      alt: 'Photo Move Pro Coach',
-      desc: 'Coach sportif • Vidéos reels & conseils clairs'
-    }
-  ];
-
-  // Fonction pour afficher page Insta
-  function showInsta(index) {
-    const container = document.getElementById('insta-content');
-    const btns = document.querySelectorAll('.insta-tab-btn');
-    btns.forEach((b,i) => {
-      b.setAttribute('aria-selected', i === index ? 'true' : 'false');
-      b.setAttribute('tabindex', i === index ? '0' : '-1');
-      b.id = `tab-${i}`;
-    });
-
-    const page = instaPages[index];
-    container.setAttribute('aria-labelledby', `tab-${index}`);
-    container.innerHTML = `
-      <img src="${page.img}" alt="${page.alt}" />
-      <strong>${page.name}</strong>
-      <p>${page.desc}</p>
-    `;
-    container.focus();
-  }
-
-  // Affiche première page Insta par défaut
-  showInsta(0);
-
-  // Menu navigation active state
-  const navLinks = document.querySelectorAll('nav a');
-  function onScroll() {
-    let scrollPos = window.scrollY + 100;
-    navLinks.forEach(link => {
-      const section = document.querySelector(link.getAttribute('href'));
-      if (section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }
-  window.addEventListener('scroll', onScroll);
-
-  // Contact form simple validation & prevent actual submit
-  const form = document.getElementById('contactForm');
-  form.addEventListener('submit', e => {
+  // Form submission simulation
+  document.getElementById('contact-form').addEventListener('submit', function(e){
     e.preventDefault();
-    if(form.checkValidity()) {
-      alert('Merci pour votre message, nous vous répondrons rapidement !');
-      form.reset();
-    } else {
-      alert('Merci de remplir tous les champs correctement.');
+    const prenom = e.target.prenom.value.trim();
+    const nom = e.target.nom.value.trim();
+    const message = e.target.message.value.trim();
+
+    if(!prenom || !nom || !message){
+      alert('Merci de remplir tous les champs.');
+      return;
     }
+    alert(`Merci ${prenom} pour votre message ! Nous vous répondrons rapidement.`);
+    e.target.reset();
   });
 </script>
 
