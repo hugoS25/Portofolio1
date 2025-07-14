@@ -2,468 +2,166 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hugo S25 - Expert Instagram & Photographie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HugoS25 - Réseaux & Sites Web</title>
   <style>
-    /* Reset & basics */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
     body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #f0f0f0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-bottom: 40px;
-    }
-    a {
-      color: #ffd369;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      color: #333;
     }
 
     header {
-      width: 100%;
-      background: #1f4068;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      background: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 999;
     }
-    /* Logo */
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      color: #ffd369;
-      font-weight: 700;
-      font-size: 1.6rem;
-      user-select: none;
-    }
-    .logo svg {
-      width: 36px;
-      height: 36px;
-      fill: #ffd369;
-      filter: drop-shadow(0 0 3px #ffc107);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-      font-weight: 600;
-    }
-    nav ul li a {
-      font-size: 1.1rem;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: background-color 0.3s ease;
-    }
-    nav ul li a:hover,
-    nav ul li a.active {
-      background-color: #ffd369;
-      color: #1f4068;
-      font-weight: 700;
-    }
-
-    main {
-      max-width: 1100px;
-      width: 90%;
-      margin-top: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #facc15;
     }
 
     section {
-      margin-bottom: 60px;
-    }
-    section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      border-left: 6px solid #ffd369;
-      padding-left: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-    }
-    section p {
-      font-size: 1.1rem;
-      line-height: 1.5;
-      max-width: 750px;
-      color: #ddd;
-      margin-bottom: 20px;
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
     }
 
-    /* Accueil */
-    #accueil p {
-      font-size: 1.25rem;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-      color: #fff;
-      font-weight: 500;
+    h2 {
+      color: #1d4ed8;
     }
 
-    /* Pages Insta */
-    #pages-insta .insta-grid {
+    .insta-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
     }
+
     .insta-card {
-      background: linear-gradient(145deg, #294c60, #1b2a3a);
-      border-radius: 16px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.4);
-      color: #fff;
-      cursor: pointer;
+      background: #fafafa;
+      border-radius: 10px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      outline-offset: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .insta-card:hover,
-    .insta-card:focus {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 20px rgba(255, 215, 105, 0.8);
-    }
+
     .insta-card img {
       width: 100%;
-      height: 190px;
-      object-fit: cover;
-      border-bottom: 3px solid #ffd369;
-      transition: filter 0.4s ease;
+      height: auto;
     }
-    .insta-card:hover img,
-    .insta-card:focus img {
-      filter: brightness(1.1);
-    }
+
     .insta-card .info {
-      padding: 16px 18px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .insta-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      color: #ffd369;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .insta-card p {
-      flex-grow: 1;
-      font-size: 1rem;
-      color: #eee;
-      line-height: 1.4;
+      padding: 15px;
     }
 
-    /* Popup */
-    #insta-popup {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(15,32,39,0.95);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      padding: 24px;
-    }
-    #insta-popup.active {
-      display: flex;
-    }
-    .popup-content {
-      background: #1f4068;
-      border-radius: 14px;
-      max-width: 720px;
-      width: 90%;
-      box-shadow: 0 0 30px rgba(255, 215, 105, 0.7);
-      color: #fff;
-      outline: none;
-    }
-    .popup-header {
-      padding: 16px 24px;
-      border-bottom: 2px solid #ffd369;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .popup-header h3 {
-      margin: 0;
-      font-size: 1.8rem;
-      color: #ffd369;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: #ffd369;
-      cursor: pointer;
-      font-weight: 700;
-      line-height: 1;
-      user-select: none;
-      transition: color 0.3s ease;
-    }
-    .close-btn:hover {
-      color: #fff;
-    }
-    .popup-body {
-      padding: 24px;
-    }
-    .popup-body img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 18px;
-      box-shadow: 0 6px 15px rgba(255, 215, 105, 0.5);
-    }
-    .popup-body p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #eee;
-    }
-
-    /* Contact */
-    #contact form {
-      max-width: 480px;
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    #contact input,
-    #contact textarea {
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-      font-family: inherit;
-      resize: vertical;
-    }
-    #contact input:focus,
-    #contact textarea:focus {
-      outline: 2px solid #ffd369;
-      background: #fef7e3;
-      color: #1f4068;
-    }
-    #contact button {
-      background-color: #ffd369;
-      color: #1f4068;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 14px 0;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    #contact button:hover {
-      background-color: #ffc107;
-    }
-
-    /* Footer */
     footer {
       text-align: center;
-      color: #999;
-      font-size: 0.9rem;
-      margin-top: 40px;
-      user-select: none;
-    }
-
-    /* Responsive */
-    @media (max-width: 720px) {
-      nav ul {
-        gap: 18px;
-      }
-      section h2 {
-        font-size: 1.8rem;
-      }
+      padding: 20px;
+      background: #111;
+      color: #ccc;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
+
 <header>
-  <div class="logo" tabindex="0" aria-label="Logo Hugo S25">
-    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-      <circle cx="32" cy="32" r="30" stroke="#ffd369" stroke-width="4" fill="none"/>
-      <path d="M16 44 L32 20 L48 44" stroke="#ffd369" stroke-width="4" fill="none" stroke-linejoin="round" />
-      <circle cx="32" cy="44" r="4" fill="#ffd369" />
-    </svg>
-    Hugo S25
-  </div>
+  <div class="logo">HugoS25 | Digital & Réseaux</div>
   <nav>
-    <ul>
-      <li><a href="#accueil" class="active">Accueil</a></li>
-      <li><a href="#pages-insta">Pages Insta</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <a href="#accueil">Accueil</a>
+    <a href="#services">Nos Services</a>
+    <a href="#instagram">Pages Instagram</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
-<main>
-  <section id="accueil" tabindex="0" aria-label="Accueil">
-    <h2>Bienvenue sur mon portfolio Instagram & Photographie</h2>
-    <p>Je suis Hugo, expert en stratégie Instagram et photographe passionné.  
-       Je crée des contenus visuels puissants et optimisés pour booster la visibilité de marques et artistes sur les réseaux sociaux.  
-       Mon objectif : faire rayonner votre image et maximiser votre impact en ligne.</p>
-  </section>
 
-  <section id="pages-insta" tabindex="0" aria-label="Pages Instagram fictives" >
-    <h2>Exemples de Pages Instagram Professionnelles</h2>
-    <p>Découvrez ces comptes fictifs que j'ai conçus, illustrant différents univers photo et styles pour capter l'attention et fidéliser vos abonnés.</p>
-    <div class="insta-grid" role="list">
-      <article class="insta-card" data-id="1" tabindex="0" role="listitem" aria-pressed="false" aria-label="Page Instagram Studio Nébuleuse">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Photo artistique studio" />
-        <div class="info">
-          <h3>Studio Nébuleuse</h3>
-          <p>Portraits artistiques et ambiances mystiques pour un feed captivant et élégant.</p>
-        </div>
-      </article>
+<section id="accueil">
+  <h2>Bienvenue</h2>
+  <p>Je crée des pages Instagram professionnelles et des sites web modernes pour aider les marques à se démarquer sur internet.</p>
+</section>
 
-      <article class="insta-card" data-id="2" tabindex="0" role="listitem" aria-pressed="false" aria-label="Page Instagram Motion Garage">
-        <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=600&q=80" alt="Photo voiture sportive" />
-        <div class="info">
-          <h3>Motion Garage</h3>
-          <p>Photographies automobiles dynamiques valorisant puissance et design haut de gamme.</p>
-        </div>
-      </article>
+<section id="services">
+  <h2>Nos Services</h2>
+  <p style="font-size: 18px; line-height: 1.6;">
+    En tant que créateur digital, j’aide les marques à renforcer leur image en ligne.
+    Je propose la création de <strong>pages Instagram professionnelles</strong> visuellement percutantes, 
+    mais aussi le développement ou l’optimisation de <strong>sites internet</strong> modernes et efficaces.
+  </p>
+  <p style="font-size: 18px; line-height: 1.6; margin-top: 15px;">
+    Mon objectif est de vous aider à obtenir plus de visibilité et à développer une présence digitale solide et professionnelle.
+  </p>
+</section>
 
-      <article class="insta-card" data-id="3" tabindex="0" role="listitem" aria-pressed="false" aria-label="Page Instagram Atelier Condensation">
-        <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80" alt="Photo gouttes de condensation" />
-        <div class="info">
-          <h3>Atelier Condensation</h3>
-          <p>Images élégantes de gouttes d’eau et textures de condensation pour un style unique.</p>
-        </div>
-      </article>
-
-      <article class="insta-card" data-id="4" tabindex="0" role="listitem" aria-pressed="false" aria-label="Page Instagram Light Play">
-        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=80" alt="Photo abstraite lumière" />
-        <div class="info">
-          <h3>Light Play</h3>
-          <p>Explorations abstraites de lumière et couleurs pour un feed original et moderne.</p>
-        </div>
-      </article>
-
-      <article class="insta-card" data-id="5" tabindex="0" role="listitem" aria-pressed="false" aria-label="Page Instagram Urban Freeze">
-        <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=600&q=80" alt="Photo urbaine hivernale" />
-        <div class="info">
-          <h3>Urban Freeze</h3>
-          <p>Ambiances urbaines hivernales et froides, condensées en images percutantes.</p>
-        </div>
-      </article>
+<section id="instagram">
+  <h2>Exemples de Pages Instagram</h2>
+  <div class="insta-grid">
+    <div class="insta-card">
+      <img src="https://source.unsplash.com/400x400/?restaurant" alt="Restaurant">
+      <div class="info">
+        <strong>@BistroParisien</strong><br/>
+        Restauration • Identité visuelle pro & ambiance raffinée
+      </div>
     </div>
-  </section>
+    <div class="insta-card">
+      <img src="https://source.unsplash.com/400x400/?barber" alt="Barber">
+      <div class="info">
+        <strong>@StudioBarber</strong><br/>
+        Salon de coiffure • Avant/Après + shooting stylisé
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="https://source.unsplash.com/400x400/?artist" alt="Artiste">
+      <div class="info">
+        <strong>@VisionArt</strong><br/>
+        Artiste visuel • Portfolio & engagement boosté
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="https://source.unsplash.com/400x400/?clothing,brand" alt="Marque">
+      <div class="info">
+        <strong>@UrbanMood</strong><br/>
+        Marque streetwear • Feed harmonisé & visuels puissants
+      </div>
+    </div>
+    <div class="insta-card">
+      <img src="https://source.unsplash.com/400x400/?gym" alt="Coach">
+      <div class="info">
+        <strong>@MoveProCoach</strong><br/>
+        Coach sportif • Vidéos reels & conseils clairs
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="contact" tabindex="0" aria-label="Contact">
-    <h2>Contactez-moi</h2>
-    <p>Prêt à dynamiser votre présence Instagram ? Écrivez-moi pour une stratégie personnalisée et un contenu qui fait la différence.</p>
-    <form>
-      <input type="text" placeholder="Votre nom" required aria-label="Votre nom" />
-      <input type="email" placeholder="Votre email" required aria-label="Votre email" />
-      <textarea rows="4" placeholder="Votre message" required aria-label="Votre message"></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-  </section>
-</main>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Tu peux me contacter par DM sur Instagram : <strong>@hugoS25</strong> ou m’envoyer un message pour en discuter.</p>
+</section>
 
 <footer>
-  © 2025 Hugo S25 - Tous droits réservés
+  &copy; 2025 HugoS25 – Création digitale & réseaux
 </footer>
 
-<div id="insta-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" tabindex="-1" aria-hidden="true">
-  <div class="popup-content" tabindex="0">
-    <div class="popup-header">
-      <h3 id="popup-title"></h3>
-      <button class="close-btn" aria-label="Fermer la fenêtre">&times;</button>
-    </div>
-    <div class="popup-body"></div>
-  </div>
-</div>
-
-<script>
-  const cards = document.querySelectorAll('.insta-card');
-  const popup = document.getElementById('insta-popup');
-  const popupTitle = popup.querySelector('#popup-title');
-  const popupBody = popup.querySelector('.popup-body');
-  const closeBtn = popup.querySelector('.close-btn');
-
-  const instaData = {
-    1: {
-      title: "Studio Nébuleuse",
-      description: "Studio Nébuleuse propose des portraits artistiques mêlant lumière tamisée et ambiance mystérieuse, parfaits pour un feed Instagram élégant et captivant. Chaque photo est pensée pour raconter une histoire unique et fidéliser vos abonnés.",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=90"
-    },
-    2: {
-      title: "Motion Garage",
-      description: "Motion Garage immortalise la puissance et la beauté des voitures haut de gamme à travers des clichés dynamiques, jouant sur les contrastes et les angles. Idéal pour booster une page Instagram automobile avec style et professionnalisme.",
-      image: "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=900&q=90"
-    },
-    3: {
-      title: "Atelier Condensation",
-      description: "Atelier Condensation capture la beauté des gouttes d’eau et de la condensation sur différentes surfaces, créant une atmosphère élégante et mystérieuse. Parfait pour une page Instagram artistique et originale.",
-      image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=900&q=90"
-    },
-    4: {
-      title: "Light Play",
-      description: "Light Play propose des images abstraites jouant avec les jeux de lumière et les couleurs vives pour offrir une identité visuelle moderne et originale, parfaite pour marquer votre présence sur Instagram.",
-      image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=90"
-    },
-    5: {
-      title: "Urban Freeze",
-      description: "Urban Freeze capture les ambiances urbaines hivernales avec une touche froide et saisissante. Un univers graphique et percutant pour une page Instagram qui ne passe pas inaperçue.",
-      image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=900&q=90"
-    }
-  };
-
-  function openPopup(id) {
-    const data = instaData[id];
-    popupTitle.textContent = data.title;
-    popupBody.innerHTML = `<img src="${data.image}" alt="Image détaillée de ${data.title}" /><p>${data.description}</p>`;
-    popup.classList.add('active');
-    popup.setAttribute('aria-hidden', 'false');
-    popup.focus();
-  }
-  function closePopup() {
-    popup.classList.remove('active');
-    popup.setAttribute('aria-hidden', 'true');
-  }
-
-  cards.forEach(card => {
-    card.addEventListener('click', () => openPopup(card.dataset.id));
-    card.addEventListener('keypress', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openPopup(card.dataset.id);
-      }
-    });
-  });
-  closeBtn.addEventListener('click', closePopup);
-  popup.addEventListener('click', (e) => {
-    if (e.target === popup) closePopup();
-  });
-  // Close popup with Escape key
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && popup.classList.contains('active')) {
-      closePopup();
-    }
-  });
-
-  // Nav link active toggle
-  const navLinks = document.querySelectorAll('nav ul li a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
-</script>
 </body>
 </html>
