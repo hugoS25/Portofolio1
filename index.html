@@ -1,69 +1,454 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Digital Flux - Communication digitale</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfolio Hugo - Boostez votre Instagram</title>
+<style>
+  /* Reset & basics */
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    color: #eee;
+    line-height: 1.6;
+  }
+  a {
+    color: #ff6a00;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Header */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #1f1f1f;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    box-shadow: 0 2px 8px rgba(255,106,0,0.3);
+    z-index: 1000;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo svg {
+    width: 36px;
+    height: 36px;
+    fill: #ff6a00;
+  }
+  .logo span {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #ff6a00;
+  }
+  nav {
+    margin-left: auto;
+  }
+  nav a {
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 5px 0;
+    position: relative;
+  }
+  nav a.active,
+  nav a:hover {
+    color: #ffa040;
+  }
+  nav a.active::after,
+  nav a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #ff6a00;
+    border-radius: 2px;
+  }
+
+  /* Main layout */
+  main {
+    padding-top: 80px;
+    max-width: 960px;
+    margin: 0 auto 40px;
+  }
+
+  section {
+    margin-bottom: 60px;
+  }
+
+  /* Accueil */
+  #accueil h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #ff6a00;
+    text-align: center;
+  }
+  #accueil p {
+    text-align: center;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #ddd;
+  }
+
+  /* Section Insta pages */
+  #insta-pages h2 {
+    color: #ff6a00;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 2rem;
+  }
+  .insta-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+  }
+  .insta-card {
+    background: #222;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255,106,0,0.3);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .insta-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ff6a00;
+  }
+  .insta-card img {
+    width: 100%;
+    display: block;
+    filter: brightness(0.85);
+  }
+  .insta-card .info {
+    padding: 15px;
+  }
+  .insta-card .info h3 {
+    color: #ff6a00;
+    margin-bottom: 8px;
+  }
+  .insta-card .info p {
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+
+  /* Popup Instagram preview */
+  #insta-popup {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1500;
+  }
+  #insta-popup.active {
+    display: flex;
+  }
+  #insta-popup .popup-content {
+    background: #1c1c1c;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 15px #ff6a00;
+    animation: fadeInUp 0.3s ease forwards;
+  }
+  #insta-popup .popup-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #insta-popup .popup-header h3 {
+    color: #ff6a00;
+  }
+  #insta-popup .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: #ff6a00;
+    cursor: pointer;
+  }
+  #insta-popup .popup-body {
+    padding: 20px;
+    color: #ddd;
+  }
+  #insta-popup img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0; transform: translateY(15px);
+    } to {
+      opacity: 1; transform: translateY(0);
+    }
+  }
+
+  /* Contact */
+  #contact h2 {
+    color: #ff6a00;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  #contact p {
+    text-align: center;
+    max-width: 550px;
+    margin: 0 auto 30px;
+    color: #ccc;
+    font-size: 1rem;
+  }
+  #contact form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  #contact input, #contact textarea {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    resize: vertical;
+  }
+  #contact button {
+    background: #ff6a00;
+    color: #121212;
+    font-weight: 700;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s ease;
+  }
+  #contact button:hover {
+    background: #ffa040;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    nav a {
+      margin-left: 15px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>Digital Flux</h1>
-      <button id="menu-toggle">&#9776;</button>
-      <ul id="nav-links">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#a-propos">À propos</a></li>
-        <li><a href="#prestations">Prestations</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <section class="hero reveal" id="accueil">
-      <h2>Boostez votre visibilité en ligne</h2>
-      <p>J’aide les entrepreneurs à développer leur présence en ligne à travers des stratégies de communication digitale puissantes et modernes.</p>
-      <a href="#contact" class="cta">Discutons de votre projet</a>
-    </section>
-  </header>
 
-  <main>
-    <section id="a-propos" class="section reveal">
-      <h2>À propos</h2>
-      <p>Je suis Hugo Siaud, expert en communication digitale. Je mets mon savoir-faire au service des entrepreneurs pour créer une présence en ligne forte, moderne et impactante. Grâce à des stratégies personnalisées et des outils innovants, je t’aide à développer ta marque et toucher ta cible efficacement.</p>
-      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Communication digitale" />
-      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Stratégie digitale" />
-    </section>
+<header>
+  <div class="logo" aria-label="Logo Hugo Portfolio">
+    <svg viewBox="0 0 64 64" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="30" stroke="#ff6a00" stroke-width="4" fill="none"/>
+      <path d="M20 44 L44 20" stroke="#ff6a00" stroke-width="4" />
+      <path d="M20 20 L44 44" stroke="#ff6a00" stroke-width="4" />
+    </svg>
+    <span>Hugo Portfolio</span>
+  </div>
+  <nav>
+    <a href="#accueil" class="active">Accueil</a>
+    <a href="#insta-pages">Pages Insta</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <section id="prestations" class="section reveal">
-      <h2>Prestations</h2>
-      <ul>
-        <li>Stratégie de communication digitale personnalisée</li>
-        <li>Gestion des réseaux sociaux</li>
-        <li>Création de contenu visuel et rédactionnel</li>
-        <li>Analyse et optimisation de la présence en ligne</li>
-      </ul>
-    </section>
+<main>
+  <section id="accueil">
+    <h1>Boostez votre visibilité Instagram</h1>
+    <p>Je crée des images et contenus stylés pour que votre réseau social attire, engage et grandisse.</p>
+  </section>
 
-    <section id="contact" class="section reveal">
-      <h2>Contact</h2>
-      <p>Email : <a href="mailto:Hugosiaud25@gmail.com">Hugosiaud25@gmail.com</a></p>
-      <p>Téléphone : <a href="tel:+33768234984">07 68 23 49 84</a></p>
-      <form id="contact-form">
-        <label for="name">Nom</label><br />
-        <input type="text" id="name" name="name" required /><br />
+  <section id="insta-pages">
+    <h2>5 Pages Instagram stylées</h2>
+    <div class="insta-cards">
+      <article class="insta-card" data-id="1" tabindex="0" role="button" aria-pressed="false">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Studio Nébuleuse portrait artistique" />
+        <div class="info">
+          <h3>Studio Nébuleuse</h3>
+          <p>Portraits artistiques et lumières dramatiques pour un feed pro.</p>
+        </div>
+      </article>
+      <article class="insta-card" data-id="2" tabindex="0" role="button" aria-pressed="false">
+        <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=600&q=80" alt="Motion Garage photographie automobile" />
+        <div class="info">
+          <h3>Motion Garage</h3>
+          <p>Photographie automobile haut de gamme, angles stylés.</p>
+        </div>
+      </article>
+      <article class="insta-card" data-id="3" tabindex="0" role="button" aria-pressed="false">
+        <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80" alt="Atelier Rétro mode urbaine" />
+        <div class="info">
+          <h3>Atelier Rétro</h3>
+          <p>Lookbook mode & branding tendance pour émerger du lot.</p>
+        </div>
+      </article>
+      <article class="insta-card" data-id="4" tabindex="0" role="button" aria-pressed="false">
+        <img src="https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=600&q=80" alt="Lines & Blocks architecture urbaine" />
+        <div class="info">
+          <h3>Lines & Blocks</h3>
+          <p>Architecture moderne, jeux d’ombres et de lumière.</p>
+        </div>
+      </article>
+      <article class="insta-card" data-id="5" tabindex="0" role="button" aria-pressed="false">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Objekto photos produits design" />
+        <div class="info">
+          <h3>Objekto</h3>
+          <p>Photos de produits stylisées pour marques ambitieuses.</p>
+        </div>
+      </article>
+    </div>
+  </section>
 
-        <label for="email">Email</label><br />
-        <input type="email" id="email" name="email" required /><br />
+  <section id="contact">
+    <h2>Contactez-moi</h2>
+    <p>Envie d’améliorer votre image sur Instagram ? Parlons-en !</p>
+    <form onsubmit="alert('Merci pour votre message, je vous recontacte rapidement.'); return false;">
+      <input type="text" placeholder="Votre nom" required />
+      <input type="email" placeholder="Votre email" required />
+      <textarea rows="4" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+</main>
 
-        <label for="message">Message</label><br />
-        <textarea id="message" name="message" rows="5" required></textarea><br />
+<!-- Popup preview -->
+<div id="insta-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+  <div class="popup-content">
+    <div class="popup-header">
+      <h3 id="popup-title">Page Instagram</h3>
+      <button class="close-btn" aria-label="Fermer la fenêtre">&times;</button>
+    </div>
+    <div class="popup-body">
+      <!-- Contenu dynamique injecté ici -->
+    </div>
+  </div>
+</div>
 
-        <button type="submit">Envoyer</button>
-      </form>
-      <p id="form-message"></p>
-    </section>
-  </main>
+<script>
+  const cards = document.querySelectorAll('.insta-card');
+  const popup = document.getElementById('insta-popup');
+  const popupBody = popup.querySelector('.popup-body');
+  const popupTitle = popup.querySelector('#popup-title');
+  const closeBtn = popup.querySelector('.close-btn');
 
-  <script src="script.js"></script>
+  const instaPagesData = {
+    1: {
+      title: "Studio Nébuleuse",
+      description: "Portraits artistiques, lumières dramatiques, ambiance condensée. Un feed Instagram qui respire la créativité et le professionnalisme.",
+      images: [
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1527694224007-7d795f23c6a2?auto=format&fit=crop&w=800&q=80"
+      ]
+    },
+    2: {
+      title: "Motion Garage",
+      description: "Photographie automobile haut de gamme, angles stylés et ambiance condensée pour faire briller vos véhicules sur Instagram.",
+      images: [
+        "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80"
+      ]
+    },
+    3: {
+      title: "Atelier Rétro",
+      description: "Lookbook mode & branding tendance pour émerger du lot avec des photos condensées, modernes et percutantes.",
+      images: [
+        "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1520962917009-66d6b6af6b9f?auto=format&fit=crop&w=800&q=80"
+      ]
+    },
+    4: {
+      title: "Lines & Blocks",
+      description: "Architecture moderne, jeux d’ombres et lumière condensée pour un feed Instagram design et professionnel.",
+      images: [
+        "https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1494522141953-cb4fc4cc0bb7?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1470163395405-d2b5a2ea43d0?auto=format&fit=crop&w=800&q=80"
+      ]
+    },
+    5: {
+      title: "Objekto",
+      description: "Photos de produits stylisées pour marques ambitieuses, avec condensation et ambiance pro pour booster votre Instagram.",
+      images: [
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=80"
+      ]
+    }
+  };
+
+  function openPopup(id) {
+    const page = instaPagesData[id];
+    popupTitle.textContent = page.title;
+    popupBody.innerHTML = `
+      <p>${page.description}</p>
+      ${page.images.map(src => `<img src="${src}" alt="${page.title} photo" />`).join('')}
+    `;
+    popup.classList.add('active');
+    popup.setAttribute('aria-hidden', 'false');
+  }
+  function closePopup() {
+    popup.classList.remove('active');
+    popup.setAttribute('aria-hidden', 'true');
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => openPopup(card.dataset.id));
+    card.addEventListener('keypress', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openPopup(card.dataset.id);
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', closePopup);
+  popup.addEventListener('click', e => {
+    if(e.target === popup) closePopup();
+  });
+
+  // Menu active link switching on scroll
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 70;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
